@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kaviya G – Portfolio</title>
+<meta name="description" content="Portfolio of Kaviya G, second-year B.E. CSE (AI & ML) student at Government College of Technology, Coimbatore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F2F5EF;
+    --ink: #16221D;
+    --muted: #55645C;
+    --line: #C3D0C6;
+    --bamboo: #2B6A55;
+    --gold: #D99A0B;
+    --display: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", sans-serif;
+    --body: "Public Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #101A16;
+      --ink: #E8EEE9;
+      --muted: #9DB0A5;
+      --line: #2A3B33;
+      --bamboo: #6FC4A3;
+      --gold: #F0B93A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101A16;
+    --ink: #E8EEE9;
+    --muted: #9DB0A5;
+    --line: #2A3B33;
+    --bamboo: #6FC4A3;
+    --gold: #F0B93A;
+  }
+
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--bamboo); text-underline-offset: 3px; }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* Hero */
+  .hero { padding: 3rem 0 3.5rem; }
+  .hero-nav { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin: 0 0 4rem; padding: 0; list-style: none; font-size: .95rem; }
+  .hero-nav a { color: var(--muted); text-decoration: none; padding: .25rem 0; }
+  .hero-nav a:hover { color: var(--ink); text-decoration: underline; }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(3.4rem, 15vw, 8.5rem);
+    line-height: .95;
+    letter-spacing: -.035em;
+    margin: 0 0 1.75rem;
+    white-space: nowrap;
+  }
+  #rest { visibility: hidden; }
+  .cursor {
+    display: inline-block;
+    width: .07em; height: .78em;
+    margin: 0 -.11em 0 .04em;
+    background: var(--gold);
+    vertical-align: -.02em;
+  }
+  .cursor.done { animation: blink 1s steps(1) 3 forwards; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .cursor.done { animation-name: blink-out; }
+  @keyframes blink-out { 0% { opacity: 1; } 45% { opacity: 0; } 55% { opacity: 1; } 100% { opacity: 0; } }
+
+  .lede { font-size: clamp(1.15rem, 3.4vw, 1.5rem); line-height: 1.4; max-width: 34rem; margin: 0 0 .75rem; font-weight: 500; }
+  .sub { color: var(--muted); max-width: 34rem; margin: 0; }
+
+  /* Sections */
+  section { position: relative; border-top: 1px solid var(--line); padding: 2.75rem 0 3rem; }
+  section::before {
+    content: "";
+    position: absolute; left: 0; top: -8px;
+    width: 4px; height: 15px; border-radius: 2px;
+    background: var(--bamboo);
+  }
+  .row { display: grid; gap: 1.25rem; }
+  @media (min-width: 760px) {
+    .row { grid-template-columns: 12rem 1fr; gap: 2.5rem; }
+  }
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin: 0 0 .25rem; }
+  p { margin: 0 0 .75rem; max-width: 40rem; }
+  .meta { color: var(--muted); font-size: .95rem; margin: 0 0 .5rem; }
+
+  .entry + .entry { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.5rem; }
+
+  dl.qualities { margin: 1.5rem 0 0; display: grid; gap: .9rem; max-width: 40rem; }
+  dl.qualities div { display: grid; gap: .1rem; }
+  @media (min-width: 560px) {
+    dl.qualities div { grid-template-columns: 11rem 1fr; gap: 1rem; }
+  }
+  dl.qualities dt { font-weight: 600; }
+  dl.qualities dd { margin: 0; color: var(--muted); }
+
+  .status { display: inline-block; font-size: .85rem; font-weight: 600; color: var(--bamboo); border: 1.5px solid var(--bamboo); border-radius: 999px; padding: 0 .65rem; margin-left: .5rem; vertical-align: .15em; }
+
+  .contact-list { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: .9rem; }
+  .contact-list li { display: grid; gap: .1rem; }
+  .contact-label { color: var(--muted); font-size: .95rem; }
+  .contact-list a { font-family: var(--display); font-weight: 600; font-size: clamp(1.25rem, 5vw, 1.75rem); letter-spacing: -.01em; overflow-wrap: anywhere; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 0 2.5rem; color: var(--muted); font-size: .95rem; }
+  footer p { margin: 0; max-width: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .cursor { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <ul class="hero-nav">
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#soft-skills">Soft skills</a></li>
+      <li><a href="#learning">Learning now</a></li>
+      <li><a href="#silambam">Silambam</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <h1 aria-label="Kaviya G"><span id="typed" aria-hidden="true">Kaviya G</span><span class="cursor" id="cursor" aria-hidden="true" hidden></span><span id="rest" aria-hidden="true"></span></h1>
+
+    <p class="lede">Second-year Computer Science and Engineering student (AI &amp; ML) at Government College of Technology, Coimbatore.</p>
+    <p class="sub">I build small apps, practise leadership habits, and train in Silambam.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="education">
+    <div class="row">
+      <h2>Education</h2>
+      <div>
+        <h3>B.E. Computer Science and Engineering (AI &amp; ML)</h3>
+        <p class="meta">Government College of Technology, Coimbatore</p>
+        <p>Currently in second year.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="row">
+      <h2>Projects</h2>
+      <div>
+        <div class="entry">
+          <h3>Voice calculator</h3>
+          <p class="meta">Built with MIT App Inventor</p>
+          <p>A calculator you can operate by speaking, developed as a mobile app.</p>
+        </div>
+        <div class="entry">
+          <h3>Phone contact book</h3>
+          <p class="meta">First-year mini project</p>
+          <p>A contact book for saving and finding phone contacts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="soft-skills">
+    <div class="row">
+      <h2>Soft skills</h2>
+      <div>
+        <h3>Leadership qualities certificate</h3>
+        <p class="meta">Issued by CMI, US</p>
+        <p>Completed the leadership qualities course and earned a certificate. It covered five qualities I practise every day:</p>
+        <dl class="qualities">
+          <div><dt>Conscientiousness</dt><dd>Careful, thorough, and dependable.</dd></div>
+          <div><dt>Problem solving</dt><dd>Breaking a problem into steps and working through it.</dd></div>
+          <div><dt>Innovativeness</dt><dd>Trying new ideas and new approaches.</dd></div>
+          <div><dt>Taking initiative</dt><dd>Starting work without waiting to be asked.</dd></div>
+          <div><dt>Perseverance</dt><dd>Continuing through difficulty until it is done.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="learning">
+    <div class="row">
+      <h2>Learning now</h2>
+      <div>
+        <div class="entry">
+          <h3>Typing <span class="status">In progress</span></h3>
+          <p class="meta">On typing.com</p>
+          <p>Building typing speed and accuracy.</p>
+        </div>
+        <div class="entry">
+          <h3>Professional English <span class="status">In progress</span></h3>
+          <p class="meta">On the RCA website</p>
+          <p>Improving written and spoken English for the workplace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="silambam">
+    <div class="row">
+      <h2>Beyond the classroom</h2>
+      <div>
+        <h3>Silambam</h3>
+        <p class="meta">Extracurricular activity</p>
+        <p>I am learning Silambam, the traditional Tamil martial art practised with a bamboo staff.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="row">
+      <h2>Contact</h2>
+      <div>
+        <p>Get in touch by email or phone.</p>
+        <ul class="contact-list">
+          <li><span class="contact-label">Email</span><a href="mailto:kaviya2007abc@gmail.com">kaviya2007abc@gmail.com</a></li>
+          <li><span class="contact-label">Phone</span><a href="tel:+918072294834">8072294834</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Kaviya G, B.E. CSE (AI &amp; ML), Government College of Technology, Coimbatore</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var full = "Kaviya G";
+  var typed = document.getElementById("typed");
+  var rest = document.getElementById("rest");
+  var cursor = document.getElementById("cursor");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return;
+
+  typed.textContent = "";
+  rest.textContent = full;
+  cursor.hidden = false;
+
+  var i = 0;
+  setTimeout(function tick() {
+    i++;
+    typed.textContent = full.slice(0, i);
+    rest.textContent = full.slice(i);
+    if (i < full.length) {
+      setTimeout(tick, 120);
+    } else {
+      cursor.classList.add("done");
+    }
+  }, 500);
+})();
+</script>
+</body>
+</html>
